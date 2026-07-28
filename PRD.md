@@ -315,29 +315,29 @@ hacker-news/
   - [x] 1.2.5. Permitir sobrescrita das constantes acima via variáveis de
         ambiente, com fallback para os valores padrão.
 
-- [ ] **1.3. Entidades de domínio (`hn_ingest/domain/entities.py`)**
-  - [ ] 1.3.1. Criar `dataclass Item` com os campos: `id`, `type`, `by`,
+- [x] **1.3. Entidades de domínio (`hn_ingest/domain/entities.py`)**
+  - [x] 1.3.1. Criar `dataclass Item` com os campos: `id`, `type`, `by`,
         `time`, `title`, `url`, `score`, `descendants`, `parent`, `text`,
         `deleted`, `dead`, `raw_json`.
-  - [ ] 1.3.2. Implementar método de fábrica `Item.from_api_response(data:
+  - [x] 1.3.2. Implementar método de fábrica `Item.from_api_response(data:
         dict)` que constrói a entidade a partir do JSON retornado pela API,
         preenchendo `raw_json` com o JSON serializado original.
-  - [ ] 1.3.3. Criar `dataclass RunSummary` com os campos: `run_type`,
+  - [x] 1.3.3. Criar `dataclass RunSummary` com os campos: `run_type`,
         `range_start`, `range_end`, `queried_count`, `inserted_count`,
         `updated_count`, `skipped_count`, `failed_count`,
         `duration_seconds`, `started_at`, `finished_at`.
-  - [ ] 1.3.4. Criar enum `ProcessOutcome` com os valores `INSERTED`,
+  - [x] 1.3.4. Criar enum `ProcessOutcome` com os valores `INSERTED`,
         `UPDATED`, `SKIPPED`, `FAILED`, representando o resultado do
         processamento de um único ID.
 
-- [ ] **1.4. Contratos de repositório (`hn_ingest/domain/repositories.py`)**
-  - [ ] 1.4.1. Definir interface abstrata `ItemRepository` com os métodos
+- [x] **1.4. Contratos de repositório (`hn_ingest/domain/repositories.py`)**
+  - [x] 1.4.1. Definir interface abstrata `ItemRepository` com os métodos
         `upsert(item: Item) -> ProcessOutcome` e `exists(item_id: int) ->
         bool`.
-  - [ ] 1.4.2. Definir interface abstrata `StateRepository` com os métodos
+  - [x] 1.4.2. Definir interface abstrata `StateRepository` com os métodos
         `get_last_item_id() -> int | None` e `set_last_item_id(value: int) ->
         None`.
-  - [ ] 1.4.3. Definir interface abstrata `RunLogRepository` com os métodos
+  - [x] 1.4.3. Definir interface abstrata `RunLogRepository` com os métodos
         `save(summary: RunSummary) -> None` e `get_latest() -> RunSummary |
         None` e `list_all() -> list[RunSummary]`.
 
