@@ -398,70 +398,70 @@ hacker-news/
 
 ### Sprint 3 — Camada de aplicação (casos de uso)
 
-- [ ] **3.1. Processamento central de intervalo
+- [x] **3.1. Processamento central de intervalo
       (`process_range_use_case.py`)**
-  - [ ] 3.1.1. Implementar função/classe `process_range(start_id, end_id,
+  - [x] 3.1.1. Implementar função/classe `process_range(start_id, end_id,
         http_client, item_repository)` que itera sequencialmente do
         `start_id` ao `end_id`.
-  - [ ] 3.1.2. Para cada ID: consultar item via `http_client.get_item`,
+  - [x] 3.1.2. Para cada ID: consultar item via `http_client.get_item`,
         tratando `None` como item ignorado (nulo).
-  - [ ] 3.1.3. Para cada item válido: converter para entidade `Item` e
+  - [x] 3.1.3. Para cada item válido: converter para entidade `Item` e
         delegar ao `item_repository.upsert`, coletando o `ProcessOutcome`.
-  - [ ] 3.1.4. Capturar `ItemFetchError` por ID, registrar o ID como
+  - [x] 3.1.4. Capturar `ItemFetchError` por ID, registrar o ID como
         `FAILED` no log da execução, e continuar o loop sem interromper os
         próximos IDs.
-  - [ ] 3.1.5. Acumular contadores: `queried_count`, `inserted_count`,
+  - [x] 3.1.5. Acumular contadores: `queried_count`, `inserted_count`,
         `updated_count`, `skipped_count`, `failed_count`.
-  - [ ] 3.1.6. Calcular o `last_success_id`: o maior ID, a partir do
+  - [x] 3.1.6. Calcular o `last_success_id`: o maior ID, a partir do
         `start_id`, tal que todos os IDs entre `start_id` e ele não tenham
         resultado em `FAILED` (interrompe o avanço no primeiro `FAILED`
         encontrado, mesmo que IDs posteriores tenham sido processados).
-  - [ ] 3.1.7. Retornar um objeto de resultado contendo os contadores e o
+  - [x] 3.1.7. Retornar um objeto de resultado contendo os contadores e o
         `last_success_id` calculado.
 
-- [ ] **3.2. Caso de uso de carga inicial (`initial_load_use_case.py`)**
-  - [ ] 3.2.1. Verificar, via `StateRepository`, se já existe
+- [x] **3.2. Caso de uso de carga inicial (`initial_load_use_case.py`)**
+  - [x] 3.2.1. Verificar, via `StateRepository`, se já existe
         `last_item_id` salvo; se existir, retornar indicação de que a carga
         inicial já foi realizada (sem processar nada).
-  - [ ] 3.2.2. Consultar `http_client.get_max_item_id()` para obter o
+  - [x] 3.2.2. Consultar `http_client.get_max_item_id()` para obter o
         `maxitem` atual.
-  - [ ] 3.2.3. Calcular `start_id = max(1, maxitem - limit + 1)` e
+  - [x] 3.2.3. Calcular `start_id = max(1, maxitem - limit + 1)` e
         `end_id = maxitem`.
-  - [ ] 3.2.4. Registrar `started_at` (timestamp) antes de iniciar o
+  - [x] 3.2.4. Registrar `started_at` (timestamp) antes de iniciar o
         processamento.
-  - [ ] 3.2.5. Invocar `process_range` com o intervalo calculado.
-  - [ ] 3.2.6. Persistir `last_item_id = last_success_id` via
+  - [x] 3.2.5. Invocar `process_range` com o intervalo calculado.
+  - [x] 3.2.6. Persistir `last_item_id = last_success_id` via
         `StateRepository`, apenas se `last_success_id >= start_id`.
-  - [ ] 3.2.7. Montar `RunSummary` (tipo `initial`) com os contadores,
+  - [x] 3.2.7. Montar `RunSummary` (tipo `initial`) com os contadores,
         `range_start`, `range_end`, `duration_seconds` e `finished_at`.
-  - [ ] 3.2.8. Persistir o `RunSummary` via `RunLogRepository`.
-  - [ ] 3.2.9. Retornar o `RunSummary` para exibição pela camada de
+  - [x] 3.2.8. Persistir o `RunSummary` via `RunLogRepository`.
+  - [x] 3.2.9. Retornar o `RunSummary` para exibição pela camada de
         apresentação.
 
-- [ ] **3.3. Caso de uso de carga incremental
+- [x] **3.3. Caso de uso de carga incremental
       (`incremental_load_use_case.py`)**
-  - [ ] 3.3.1. Ler `last_item_id` salvo via `StateRepository`; se não
+  - [x] 3.3.1. Ler `last_item_id` salvo via `StateRepository`; se não
         existir, retornar indicação de que é necessário rodar a carga
         inicial primeiro.
-  - [ ] 3.3.2. Consultar `http_client.get_max_item_id()` para obter o
+  - [x] 3.3.2. Consultar `http_client.get_max_item_id()` para obter o
         `maxitem` atual.
-  - [ ] 3.3.3. Se `maxitem <= last_item_id`, retornar resultado indicando
+  - [x] 3.3.3. Se `maxitem <= last_item_id`, retornar resultado indicando
         que não há itens novos, sem realizar chamadas de item.
-  - [ ] 3.3.4. Calcular `start_id = last_item_id + 1` e `end_id = maxitem`.
-  - [ ] 3.3.5. Reaproveitar `process_range` para processar o intervalo.
-  - [ ] 3.3.6. Persistir o novo `last_item_id` apenas se o processamento
+  - [x] 3.3.4. Calcular `start_id = last_item_id + 1` e `end_id = maxitem`.
+  - [x] 3.3.5. Reaproveitar `process_range` para processar o intervalo.
+  - [x] 3.3.6. Persistir o novo `last_item_id` apenas se o processamento
         avançou (`last_success_id >= start_id`).
-  - [ ] 3.3.7. Montar e persistir `RunSummary` (tipo `incremental`),
+  - [x] 3.3.7. Montar e persistir `RunSummary` (tipo `incremental`),
         seguindo a mesma estrutura da carga inicial.
-  - [ ] 3.3.8. Retornar o `RunSummary` (ou a indicação de "nenhum item
+  - [x] 3.3.8. Retornar o `RunSummary` (ou a indicação de "nenhum item
         novo") para exibição pela camada de apresentação.
 
-- [ ] **3.4. Caso de uso de relatório (`report_use_case.py`)**
-  - [ ] 3.4.1. Implementar `get_latest_summary()`, delegando a
+- [x] **3.4. Caso de uso de relatório (`report_use_case.py`)**
+  - [x] 3.4.1. Implementar `get_latest_summary()`, delegando a
         `RunLogRepository.get_latest()`.
-  - [ ] 3.4.2. Implementar `get_history()`, delegando a
+  - [x] 3.4.2. Implementar `get_history()`, delegando a
         `RunLogRepository.list_all()`.
-  - [ ] 3.4.3. Implementar `get_current_state()`, retornando o
+  - [x] 3.4.3. Implementar `get_current_state()`, retornando o
         `last_item_id` atual via `StateRepository`.
 
 ### Sprint 4 — Camada de apresentação (CLI) e documentação
