@@ -343,57 +343,57 @@ hacker-news/
 
 ### Sprint 2 — Camada de infraestrutura (persistência e cliente HTTP)
 
-- [ ] **2.1. Bootstrap do banco (`hn_ingest/infrastructure/database.py`)**
-  - [ ] 2.1.1. Implementar função `get_connection()` que retorna uma conexão
+- [x] **2.1. Bootstrap do banco (`hn_ingest/infrastructure/database.py`)**
+  - [x] 2.1.1. Implementar função `get_connection()` que retorna uma conexão
         `sqlite3` configurada (`row_factory`, `PRAGMA foreign_keys`).
-  - [ ] 2.1.2. Implementar função `initialize_schema(connection)` que cria as
+  - [x] 2.1.2. Implementar função `initialize_schema(connection)` que cria as
         tabelas `items`, `run_state` e `run_log` caso não existam
         (`CREATE TABLE IF NOT EXISTS`).
-  - [ ] 2.1.3. Adicionar índice em `items.type` e `items.time` para consultas
+  - [x] 2.1.3. Adicionar índice em `items.type` e `items.time` para consultas
         futuras (campos consultáveis).
 
-- [ ] **2.2. Cliente HTTP (`hn_ingest/infrastructure/http_client.py`)**
-  - [ ] 2.2.1. Implementar classe `HackerNewsClient` com método
+- [x] **2.2. Cliente HTTP (`hn_ingest/infrastructure/http_client.py`)**
+  - [x] 2.2.1. Implementar classe `HackerNewsClient` com método
         `get_max_item_id() -> int`, chamando `GET /maxitem.json`.
-  - [ ] 2.2.2. Implementar método `get_item(item_id: int) -> dict | None`,
+  - [x] 2.2.2. Implementar método `get_item(item_id: int) -> dict | None`,
         chamando `GET /item/{id}.json`, retornando `None` quando a API
         responde `null`.
-  - [ ] 2.2.3. Implementar lógica interna de retry com backoff exponencial
+  - [x] 2.2.3. Implementar lógica interna de retry com backoff exponencial
         (`MAX_RETRIES` tentativas, espera `BACKOFF_BASE_SECONDS * 2 **
         tentativa`), aplicada a erros de timeout e de conexão.
-  - [ ] 2.2.4. Tratar exaustão das tentativas levantando exceção específica
+  - [x] 2.2.4. Tratar exaustão das tentativas levantando exceção específica
         `ItemFetchError`, capturada posteriormente pelo caso de uso.
-  - [ ] 2.2.5. Aplicar `REQUEST_TIMEOUT_SECONDS` em todas as chamadas HTTP.
-  - [ ] 2.2.6. (Opcional/RF13) Implementar método `get_updates() -> dict`
+  - [x] 2.2.5. Aplicar `REQUEST_TIMEOUT_SECONDS` em todas as chamadas HTTP.
+  - [x] 2.2.6. (Opcional/RF13) Implementar método `get_updates() -> dict`
         chamando `GET /updates.json`, retornando a lista de `items`
         alterados.
 
-- [ ] **2.3. Repositório de itens (`sqlite_item_repository.py`)**
-  - [ ] 2.3.1. Implementar `SqliteItemRepository` que recebe uma conexão
+- [x] **2.3. Repositório de itens (`sqlite_item_repository.py`)**
+  - [x] 2.3.1. Implementar `SqliteItemRepository` que recebe uma conexão
         SQLite no construtor.
-  - [ ] 2.3.2. Implementar `upsert(item)` usando
+  - [x] 2.3.2. Implementar `upsert(item)` usando
         `INSERT ... ON CONFLICT(id) DO UPDATE ...`, comparando campos
         relevantes antes de decidir entre `INSERTED`, `UPDATED` ou
         `SKIPPED` (sem mudança).
-  - [ ] 2.3.3. Garantir preenchimento de `inserted_at` na criação e
+  - [x] 2.3.3. Garantir preenchimento de `inserted_at` na criação e
         `updated_at` a cada upsert.
-  - [ ] 2.3.4. Implementar `exists(item_id)` com `SELECT 1 FROM items WHERE
+  - [x] 2.3.4. Implementar `exists(item_id)` com `SELECT 1 FROM items WHERE
         id = ?`.
 
-- [ ] **2.4. Repositório de estado (`sqlite_state_repository.py`)**
-  - [ ] 2.4.1. Implementar `SqliteStateRepository` com tabela `run_state`
+- [x] **2.4. Repositório de estado (`sqlite_state_repository.py`)**
+  - [x] 2.4.1. Implementar `SqliteStateRepository` com tabela `run_state`
         (chave/valor).
-  - [ ] 2.4.2. Implementar `get_last_item_id()` retornando `None` quando a
+  - [x] 2.4.2. Implementar `get_last_item_id()` retornando `None` quando a
         chave `last_item_id` não existir (primeira execução).
-  - [ ] 2.4.3. Implementar `set_last_item_id(value)` com upsert da chave
+  - [x] 2.4.3. Implementar `set_last_item_id(value)` com upsert da chave
         `last_item_id` e atualização de `updated_at`.
 
-- [ ] **2.5. Repositório de execuções (`sqlite_run_log_repository.py`)**
-  - [ ] 2.5.1. Implementar `SqliteRunLogRepository.save(summary)` inserindo
+- [x] **2.5. Repositório de execuções (`sqlite_run_log_repository.py`)**
+  - [x] 2.5.1. Implementar `SqliteRunLogRepository.save(summary)` inserindo
         uma linha na tabela `run_log`.
-  - [ ] 2.5.2. Implementar `get_latest()` retornando o registro mais recente
+  - [x] 2.5.2. Implementar `get_latest()` retornando o registro mais recente
         por `finished_at`.
-  - [ ] 2.5.3. Implementar `list_all()` retornando todas as execuções
+  - [x] 2.5.3. Implementar `list_all()` retornando todas as execuções
         ordenadas da mais recente para a mais antiga.
 
 ### Sprint 3 — Camada de aplicação (casos de uso)
