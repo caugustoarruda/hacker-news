@@ -293,15 +293,15 @@ hacker-news/
 
 ### Sprint 1 — Fundamentos, configuração e camada de domínio
 
-- [ ] **1.1. Estrutura inicial do projeto**
-  - [ ] 1.1.1. Criar a estrutura de diretórios `hn_ingest/` com os
+- [x] **1.1. Estrutura inicial do projeto**
+  - [x] 1.1.1. Criar a estrutura de diretórios `hn_ingest/` com os
         subpacotes `domain/`, `infrastructure/`, `application/` e
         `presentation/`, cada um com `__init__.py`.
-  - [ ] 1.1.2. Criar `requirements.txt` contendo apenas a dependência
+  - [x] 1.1.2. Criar `requirements.txt` contendo apenas a dependência
         `requests`.
-  - [ ] 1.1.3. Criar `main.py` na raiz como ponto de entrada, que apenas
+  - [x] 1.1.3. Criar `main.py` na raiz como ponto de entrada, que apenas
         importa e invoca a função principal da CLI (`presentation/cli.py`).
-  - [ ] 1.1.4. Configurar `.gitignore` básico (arquivo `.db` local,
+  - [x] 1.1.4. Configurar `.gitignore` básico (arquivo `.db` local,
         `__pycache__`, ambiente virtual).
 
 - [ ] **1.2. Módulo de configuração (`hn_ingest/config.py`)**
