@@ -255,3 +255,20 @@ watermark não faz nenhuma chamada de item (mensagem de "nenhum item novo").
 - **Sem processamento de todo o histórico**: a carga inicial é
   deliberadamente limitada por `--limit`; não é objetivo deste utilitário
   baixar a totalidade do histórico do Hacker News.
+
+## 8. Uso de IA generativa no desenvolvimento
+
+Este projeto foi construído com apoio do Claude Code (Anthropic) ao longo de
+todo o ciclo, de forma assistida e revisada pelo autor, não
+autônoma/sem supervisão:
+
+- Elaboração do [`PRD.md`](PRD.md) (escopo, requisitos, arquitetura em
+  camadas e roadmap de sprints) a partir da descrição do desafio fornecida
+  pelo autor.
+- Estrutura inicial do repositório (`hn_ingest/`, `main.py`,
+  `requirements.txt`, `.gitignore`).
+- Implementação dos módulos de domínio, infraestrutura, aplicação e
+  apresentação (`hn_ingest/domain`, `hn_ingest/infrastructure`,
+  `hn_ingest/application`, `hn_ingest/presentation`), sprint a sprint,
+  seguindo as decisões técnicas documentadas no PRD.
+- Esta própria documentação final (README).
