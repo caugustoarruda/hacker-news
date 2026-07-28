@@ -304,15 +304,15 @@ hacker-news/
   - [x] 1.1.4. Configurar `.gitignore` básico (arquivo `.db` local,
         `__pycache__`, ambiente virtual).
 
-- [ ] **1.2. Módulo de configuração (`hn_ingest/config.py`)**
-  - [ ] 1.2.1. Definir constante `BASE_URL` da API do Hacker News
+- [x] **1.2. Módulo de configuração (`hn_ingest/config.py`)**
+  - [x] 1.2.1. Definir constante `BASE_URL` da API do Hacker News
         (`https://hacker-news.firebaseio.com/v0/`).
-  - [ ] 1.2.2. Definir constantes de resiliência: `REQUEST_TIMEOUT_SECONDS`,
+  - [x] 1.2.2. Definir constantes de resiliência: `REQUEST_TIMEOUT_SECONDS`,
         `MAX_RETRIES`, `BACKOFF_BASE_SECONDS`.
-  - [ ] 1.2.3. Definir constante `DEFAULT_INITIAL_LOAD_LIMIT` (quantidade
+  - [x] 1.2.3. Definir constante `DEFAULT_INITIAL_LOAD_LIMIT` (quantidade
         padrão de itens da carga inicial).
-  - [ ] 1.2.4. Definir caminho padrão do arquivo SQLite (`DATABASE_PATH`).
-  - [ ] 1.2.5. Permitir sobrescrita das constantes acima via variáveis de
+  - [x] 1.2.4. Definir caminho padrão do arquivo SQLite (`DATABASE_PATH`).
+  - [x] 1.2.5. Permitir sobrescrita das constantes acima via variáveis de
         ambiente, com fallback para os valores padrão.
 
 - [ ] **1.3. Entidades de domínio (`hn_ingest/domain/entities.py`)**
