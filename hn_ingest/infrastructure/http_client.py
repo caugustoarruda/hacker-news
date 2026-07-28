@@ -9,7 +9,9 @@ from hn_ingest import config
 
 
 class ItemFetchError(Exception):
-    """Levantada quando um item não pôde ser obtido após esgotar as tentativas."""
+    """Levantada quando um item não pôde ser obtido após esgotar as
+    tentativas.
+    """
 
 
 class HackerNewsClient:
@@ -31,7 +33,9 @@ class HackerNewsClient:
         )
 
     def get_updates(self) -> dict:
-        """Consulta `GET /updates.json`, retornando os itens alterados (RF13)."""
+        """Consulta `GET /updates.json`, retornando os itens alterados
+        (RF13).
+        """
         return self._request_with_retry(f'{self._base_url}/updates.json')
 
     def _request_with_retry(self, url: str):

@@ -466,70 +466,70 @@ hacker-news/
 
 ### Sprint 4 — Camada de apresentação (CLI) e documentação
 
-- [ ] **4.1. Interface de linha de comando (`presentation/cli.py`)**
-  - [ ] 4.1.1. Configurar `argparse` com subcomandos: `initial-load`,
+- [x] **4.1. Interface de linha de comando (`presentation/cli.py`)**
+  - [x] 4.1.1. Configurar `argparse` com subcomandos: `initial-load`,
         `incremental-load` e `report`.
-  - [ ] 4.1.2. Adicionar argumento `--limit` (inteiro, opcional, com padrão
+  - [x] 4.1.2. Adicionar argumento `--limit` (inteiro, opcional, com padrão
         `DEFAULT_INITIAL_LOAD_LIMIT`) ao subcomando `initial-load`.
-  - [ ] 4.1.3. Adicionar argumento opcional `--history` ao subcomando
+  - [x] 4.1.3. Adicionar argumento opcional `--history` ao subcomando
         `report`, para exibir todas as execuções em vez de apenas a última.
-  - [ ] 4.1.4. Implementar montagem das dependências (conexão SQLite,
+  - [x] 4.1.4. Implementar montagem das dependências (conexão SQLite,
         repositórios, cliente HTTP) e injeção nos casos de uso, a partir de
         `main.py`/`cli.py`.
-  - [ ] 4.1.5. Configurar `logging` básico (nível `INFO`, formato com
+  - [x] 4.1.5. Configurar `logging` básico (nível `INFO`, formato com
         timestamp) no início da execução da CLI.
 
-- [ ] **4.2. Formatação de saída em português brasileiro**
-  - [ ] 4.2.1. Implementar função de formatação do `RunSummary` em texto
+- [x] **4.2. Formatação de saída em português brasileiro**
+  - [x] 4.2.1. Implementar função de formatação do `RunSummary` em texto
         legível (faixa processada, consultados, inseridos, atualizados,
         ignorados, falhas, duração), em português.
-  - [ ] 4.2.2. Implementar mensagens específicas para os casos de borda:
+  - [x] 4.2.2. Implementar mensagens específicas para os casos de borda:
         carga inicial já realizada, nenhum item novo no incremental, carga
         inicial ainda não realizada ao tentar rodar incremental.
-  - [ ] 4.2.3. Implementar formatação do histórico de execuções para o
+  - [x] 4.2.3. Implementar formatação do histórico de execuções para o
         comando `report --history` (tabela simples em texto).
-  - [ ] 4.2.4. Garantir código de saída (`exit code`) diferente de zero em
+  - [x] 4.2.4. Garantir código de saída (`exit code`) diferente de zero em
         caso de erro não tratado, com mensagem amigável em português.
 
-- [ ] **4.3. Revisão de padronização do código**
-  - [ ] 4.3.1. Revisar todo o código-fonte garantindo uso de aspas simples
+- [x] **4.3. Revisão de padronização do código**
+  - [x] 4.3.1. Revisar todo o código-fonte garantindo uso de aspas simples
         de forma consistente.
-  - [ ] 4.3.2. Revisar aderência ao PEP 8 (nomes, espaçamento, imports,
+  - [x] 4.3.2. Revisar aderência ao PEP 8 (nomes, espaçamento, imports,
         comprimento de linha).
-  - [ ] 4.3.3. Revisar se todo identificador (módulo, classe, função,
+  - [x] 4.3.3. Revisar se todo identificador (módulo, classe, função,
         variável) está em inglês e todo texto exibido ao usuário está em
         português brasileiro.
-  - [ ] 4.3.4. Revisar docstrings das classes e funções públicas, escritas
+  - [x] 4.3.4. Revisar docstrings das classes e funções públicas, escritas
         em português brasileiro, explicando apenas o não óbvio.
 
-- [ ] **4.4. README**
-  - [ ] 4.4.1. Escrever seção de visão geral do projeto e requisitos
+- [x] **4.4. README**
+  - [x] 4.4.1. Escrever seção de visão geral do projeto e requisitos
         (Python 3.11+, `pip install -r requirements.txt`).
-  - [ ] 4.4.2. Escrever instruções de execução da carga inicial (exemplo de
+  - [x] 4.4.2. Escrever instruções de execução da carga inicial (exemplo de
         comando com `--limit`).
-  - [ ] 4.4.3. Escrever instruções de execução da carga incremental
+  - [x] 4.4.3. Escrever instruções de execução da carga incremental
         (exemplo de comando).
-  - [ ] 4.4.4. Escrever instruções de execução do relatório (última
+  - [x] 4.4.4. Escrever instruções de execução do relatório (última
         execução e histórico).
-  - [ ] 4.4.5. Documentar a estrutura de camadas do projeto e a localização
+  - [x] 4.4.5. Documentar a estrutura de camadas do projeto e a localização
         do arquivo SQLite gerado.
-  - [ ] 4.4.6. Documentar a política de watermark (avanço apenas até o
+  - [x] 4.4.6. Documentar a política de watermark (avanço apenas até o
         maior ID contíguo sem falha) e o comportamento de idempotência.
-  - [ ] 4.4.7. Documentar limitações conhecidas (execução única por vez,
+  - [x] 4.4.7. Documentar limitações conhecidas (execução única por vez,
         sem testes automatizados, sem containerização), conforme escopo do
         desafio.
 
-- [ ] **4.5. Validação manual final**
-  - [ ] 4.5.1. Executar `initial-load` com um `--limit` pequeno e confirmar
+- [x] **4.5. Validação manual final**
+  - [x] 4.5.1. Executar `initial-load` com um `--limit` pequeno e confirmar
         no banco a quantidade de itens inseridos e o resumo exibido.
-  - [ ] 4.5.2. Reexecutar `initial-load` e confirmar que o sistema informa
+  - [x] 4.5.2. Reexecutar `initial-load` e confirmar que o sistema informa
         que a carga inicial já foi realizada, sem duplicar registros.
-  - [ ] 4.5.3. Executar `incremental-load` e confirmar que apenas o
+  - [x] 4.5.3. Executar `incremental-load` e confirmar que apenas o
         intervalo novo é consultado.
-  - [ ] 4.5.4. Reexecutar `incremental-load` imediatamente em seguida e
+  - [x] 4.5.4. Reexecutar `incremental-load` imediatamente em seguida e
         confirmar comportamento de "nenhum item novo" quando não houver
         itens além do `maxitem` já processado.
-  - [ ] 4.5.5. Executar `report` e `report --history` e validar que os
+  - [x] 4.5.5. Executar `report` e `report --history` e validar que os
         dados exibidos condizem com as execuções realizadas.
-  - [ ] 4.5.6. Validar manualmente o tratamento de um ID inexistente/nulo
+  - [x] 4.5.6. Validar manualmente o tratamento de um ID inexistente/nulo
         dentro do intervalo processado.

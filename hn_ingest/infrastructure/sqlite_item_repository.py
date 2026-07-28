@@ -96,5 +96,7 @@ class SqliteItemRepository(ItemRepository):
             item.descendants, item.parent, item.text, int(item.deleted),
             int(item.dead), item.raw_json,
         )
-        existing_values = tuple(existing[column] for column in _COMPARABLE_COLUMNS)
+        existing_values = tuple(
+            existing[column] for column in _COMPARABLE_COLUMNS
+        )
         return existing_values == new_values

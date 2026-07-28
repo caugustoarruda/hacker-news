@@ -44,7 +44,7 @@ class RunLogRepository(ABC):
 
     @abstractmethod
     def get_latest(self) -> Optional[RunSummary]:
-        """Retorna o resumo da execução mais recente, ou `None` se não houver."""
+        """Retorna o resumo da execução mais recente, ou `None` se ausente."""
         raise NotImplementedError
 
     @abstractmethod
